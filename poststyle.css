@@ -1,0 +1,18 @@
+body {
+    background-color: rgb(157, 207, 83);
+}
+
+#title {
+    text-align: center;
+    color: rgb(143, 42, 42);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.post-creation {
+    text-align: center;
+    font-size: 20px;
+}
+
+.post-creation label {
+    color: rgb(31, 39, 44);
+}
