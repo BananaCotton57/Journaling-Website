@@ -1,1 +1,0 @@
-In this project, the user can login and make a journal entry for themselves. Each user will be able to post whatever they want on their own personalized journal.

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="registerstyle.css">
+    <link rel="stylesheet" href="./styles/registerstyle.css">
 </head>
 <body>
     
@@ -13,13 +13,13 @@
     <hr>
 
     <div class="register">
-     <form>
+     <form id="registerForm">
         <label for="username">Username</label>
-        <input type="text" name="username"> <br>
+        <input type="text" id="username"> <br>
         <label for="pwd">Password</label>
-        <input type="password" name="password"> <br>
+        <input type="password" id="password"> <br>
         <label for="pwdconfirm">Confirm Password</label>
-        <input type="password" name="password_confirm"> <br>
+        <input type="password" id="password_confirm"> <br>
         <input type="submit" value="Register">
      </form>
     </div>
@@ -30,6 +30,7 @@
         <a href="post.html">Post</a>
     </nav>
 
+    <script src="./scripts/registerUser.js"></script>
    
 </body>
 </html>
