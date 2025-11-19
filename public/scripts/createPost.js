@@ -6,8 +6,10 @@ function Post(e){
     e.preventDefault();
 
     const journalPage = {
-        //title: title,
-        content: document.getElementById("post-create").value
+        title: document.getElementById("post-title").value,
+        content: document.getElementById("post-create").value,
+        dateCreated: new Date().toLocaleDateString(),
+        timeCreated: new Date().toLocaleTimeString()
     }
 
     console.log(journalPage)

@@ -7,7 +7,8 @@ function login(e){
 
     const user = {
         username: document.getElementById("username").value,
-        password: document.getElementById("password").value
+        password: document.getElementById("password").value,
+        dateCreated: new Date().toLocaleDateString()
     }
 
     console.log(user);
