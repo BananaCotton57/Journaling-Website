@@ -8,7 +8,7 @@ function login(e){
     const user = {
         username: document.getElementById("username").value,
         password: document.getElementById("password").value,
-        dateCreated: new Date().toLocaleDateString()
+        //dateCreated: new Date().toLocaleDateString() (doesn't make sense for login. might get it from database)
     }
 
     console.log(user);

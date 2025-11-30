@@ -8,8 +8,7 @@ function Post(e){
     const journalPage = {
         title: document.getElementById("post-title").value,
         content: document.getElementById("post-create").value,
-        dateCreated: new Date().toLocaleDateString(),
-        timeCreated: new Date().toLocaleTimeString()
+        dateCreated: new Date()
     }
 
     console.log(journalPage)

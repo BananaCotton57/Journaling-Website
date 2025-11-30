@@ -16,7 +16,8 @@ function register(e){
     const user = {
         username: document.getElementById("username").value,
         email: document.getElementById("email").value,
-        password: document.getElementById("password").value
+        password: document.getElementById("password").value,
+        dateCreated: new Date(),
     }
 
     console.log("Register Function Ran!!!")

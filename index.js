@@ -1,4 +1,3 @@
-// specify we want to use express (I will change all of this)
 const express = require('express')
 const app = express()
 
@@ -16,10 +15,7 @@ app.use(function(req, res, next) {
 });
 
 app.use("/users", userRoutes)
-/* I have a route called getRecipes under recipeRoutes below.
-   What is the fetch url to call it? It is a get request.
-*/
-// app.use("/recipes", recipeRoutes)
+app.use("/recipes", postRoutes)
 
 const PORT = process.env.PORT || 3000
 app.listen(PORT, () => console.log(`Server started on port ${PORT}!!`))
