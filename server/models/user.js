@@ -3,12 +3,16 @@ const users = [
   {
     userId: 12345,
     userName: "cathy123",
-    password: "icecream"
+    password: "icecream",
+    email: "something@net.com",
+    dateCreated: "November"
   },
   {
     userId: 55555,
     userName: "bobbi",
-    password: "badpasswd"
+    password: "badpasswd",
+    email: "spam@net.com",
+    dateCreated: "December"
   }
 ]
 
