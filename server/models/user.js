@@ -1,28 +1,46 @@
-// Pseudo database. Will add MySQL tables later.
-const users = [
-  {
-    userId: 12345,
-    userName: "cathy123",
-    password: "icecream",
-    email: "something@net.com",
-    dateCreated: "November"
-  },
-  {
-    userId: 55555,
-    userName: "bobbi",
-    password: "badpasswd",
-    email: "spam@net.com",
-    dateCreated: "December"
-  }
-]
+const con = require("./db_connect")
 
-// CRUD Operation
-// READ for grabbing all users
-function getAllUsers() {
-  // if (users.length == 0) {
-  //   throw Error("No users to send over!!")
-  // }
-  return users
+async function createUserTable() {
+  let sql = `
+    CREATE TABLE IF NOT EXISTS User (
+      UserID INT NOT NULL AUTO_INCREMENT,
+      Username VARCHAR(255) NOT NULL UNIQUE,
+      Password VARCHAR(255) NOT NULL,
+      CONSTRAINT userPK PRIMARY KEY(userID)
+    );
+  `
+  await con.query(sql)
 }
 
-module.exports = { getAllUsers }
+createUserTable()
+
+async function userExists(user) {
+  let sql = `
+      SELECT * FROM User
+      WHERE Username="${user.username}"
+  `
+  let currentUser = await con.query(sql)
+  return currentUser[0]
+}
+
+async function getAllUsers() {
+  let sql = `
+    SELECT * FROM User;
+  `
+  return await con.query(sql)
+}
+
+async function register(user) {
+  let currentUser = await userExists(user)
+  if(currentUser) throw Error("Username already in use!")
+  
+  let sql = `
+    INSERT INTO User(Username, Password)
+    VALUES("${user.username}", "${user.password}")
+  `  
+  await con.query(sql)
+
+  return await userExists(user)
+}
+
+module.exports = { getAllUsers, register, userExists }
