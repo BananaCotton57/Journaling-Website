@@ -87,4 +87,16 @@ async function createPage(page) {
   console.log("Page Created!")
 }
 
-module.exports = { getAllJournalPages, getAllMoods, getAllTags, createPage }
+async function editPageTitle(page) {
+  const sql = `UPDATE Page SET Title = "${page.Title}" WHERE PageID = ${page.PageID}`
+
+  await con.query(sql)
+}
+
+async function deletePage(pageId) {
+  const sql = `DELETE FROM Page WHERE PageId = ${pageId}`
+
+  await con.query(sql)
+}
+
+module.exports = { getAllJournalPages, getAllMoods, getAllTags, createPage, editPageTitle, deletePage }

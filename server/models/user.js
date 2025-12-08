@@ -44,7 +44,7 @@ async function register(user) {
 }
 
 async function editUser(user) {
-  const sql = `UPDATE User SET Username = "${user.Username}" WHERE UserId = ${user.UserId}`
+  const sql = `UPDATE User SET Username = "${user.Username}" WHERE UserId = ${user.UserID}`
 
   await con.query(sql)
 }
