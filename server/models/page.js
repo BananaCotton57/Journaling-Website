@@ -52,22 +52,6 @@ async function getAllJournalPages() {
 }
 
 //I have no idea if ill use this
-async function getAllMoods() {
-  let sql = `
-    SELECT * FROM Mood;
-  `
-  return await con.query(sql)
-}
-
-//I have no idea if ill use this
-async function getAllTags() {
-  let sql = `
-    SELECT * FROM Tag;
-  `
-  return await con.query(sql)
-}
-
-//I have no idea if ill use this
 async function pageExists(page) {
   let sql = `
       SELECT * FROM Page
@@ -97,6 +81,22 @@ async function deletePage(pageId) {
   const sql = `DELETE FROM Page WHERE PageId = ${pageId}`
 
   await con.query(sql)
+}
+
+//I have no idea if ill use this
+async function getAllMoods() {
+  let sql = `
+    SELECT * FROM Mood;
+  `
+  return await con.query(sql)
+}
+
+//I have no idea if ill use this
+async function getAllTags() {
+  let sql = `
+    SELECT * FROM Tag;
+  `
+  return await con.query(sql)
 }
 
 module.exports = { getAllJournalPages, getAllMoods, getAllTags, createPage, editPageTitle, deletePage }
