@@ -22,4 +22,22 @@ router
   }
 })
 
+.put('/edit', (req, res) => {
+  try {
+    const user = User.editUser(req.body)
+    res.send({...user, Password: undefined})
+  } catch (err) {
+    res.status(401).send({message: err.message})
+  }
+})
+
+.delete('/delete', (req, res) => {
+  try {
+    User.deleteUser(req.body.UserID)
+    res.send({success: "Goodbye"})
+  } catch (err){
+    res.status(401).send({message: err.message})
+  }
+})
+
 module.exports = router

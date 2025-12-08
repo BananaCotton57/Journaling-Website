@@ -17,7 +17,7 @@ createUserTable()
 async function userExists(user) {
   let sql = `
       SELECT * FROM User
-      WHERE Username="${user.username}"
+      WHERE Username="${user.Username}"
   `
   let currentUser = await con.query(sql)
   return currentUser[0]
@@ -36,11 +36,23 @@ async function register(user) {
   
   let sql = `
     INSERT INTO User(Username, Password)
-    VALUES("${user.username}", "${user.password}")
+    VALUES("${user.Username}", "${user.Password}")
   `  
   await con.query(sql)
 
   return await userExists(user)
 }
 
-module.exports = { getAllUsers, register, userExists }
+async function editUser(user) {
+  const sql = `UPDATE User SET Username = "${user.Username}" WHERE UserId = ${user.UserId}`
+
+  await con.query(sql)
+}
+
+async function deleteUser(userId) {
+  const sql = `DELETE FROM User WHERE UserId = ${userId}`
+
+  await con.query(sql)
+}
+
+module.exports = { getAllUsers, register, editUser, deleteUser }
