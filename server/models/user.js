@@ -17,7 +17,7 @@ createUserTable()
 async function userExists(user) {
   let sql = `
       SELECT * FROM User
-      WHERE Username="${user.Username}"
+      WHERE Username="${user.username}"
   `
   let currentUser = await con.query(sql)
   return currentUser[0]
@@ -36,7 +36,7 @@ async function register(user) {
   
   let sql = `
     INSERT INTO User(Username, Password)
-    VALUES("${user.Username}", "${user.Password}")
+    VALUES("${user.username}", "${user.password}")
   `  
   await con.query(sql)
 
@@ -46,7 +46,7 @@ async function register(user) {
 async function login(user) {
   let currentUser = await userExists(user)
   if(!currentUser) throw Error("Username does not exist!")
-  if(user.Password !== currentUser.Password) throw Error("Password incorrect!")
+  if(user.password !== currentUser.Password) throw Error("Password incorrect!")
 
   return currentUser
 }
