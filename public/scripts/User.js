@@ -15,7 +15,7 @@ function login(e){
       .then(data => {
         if(!data.message) {
         setCurrentUser(data)
-        window.location.href = "post.html"
+        window.location.href = "page.html"
         console.log("wow u logged in!!!!")
         }
       })

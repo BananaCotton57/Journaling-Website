@@ -55,20 +55,31 @@ async function getAllJournalPages() {
 async function pageExists(page) {
   let sql = `
       SELECT * FROM Page
-      WHERE PageID="${page.PageID}"
+      WHERE PageID=${page.PageID}
   `
   let currentPage = await con.query(sql)
   return currentPage[0]
 }
 
+async function getPagesByUser(userID) {
+  let sql = `
+      SELECT * FROM Page
+      WHERE UserID=${userID}
+  `
+  let pages = await con.query(sql)
+  return pages
+}
+
 async function createPage(page) {
   let sql = `
     INSERT INTO Page(Title, Content, UserID)
-    VALUES("${page.Title}", "${page.Content}", "${page.UserID}")
+    VALUES("${page.title}", "${page.content}", ${page.UserID})
   `  
   await con.query(sql)
 
   console.log("Page Created!")
+
+  return await getPagesByUser(page.UserID)
 }
 
 async function editPageTitle(page) {
