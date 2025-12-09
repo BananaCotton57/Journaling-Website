@@ -52,7 +52,7 @@ async function getAllJournalPages() {
 }
 
 //I have no idea if ill use this
-async function pageExists(page) {
+async function getPageByID(page) {
   let sql = `
       SELECT * FROM Page
       WHERE PageID=${page.PageID}
