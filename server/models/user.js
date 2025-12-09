@@ -43,6 +43,14 @@ async function register(user) {
   return await userExists(user)
 }
 
+async function login(user) {
+  let currentUser = await userExists(user)
+  if(!currentUser) throw Error("Username does not exist!")
+  if(user.Password !== currentUser.Password) throw Error("Password incorrect!")
+
+  return currentUser
+}
+
 async function editUser(user) {
   const sql = `UPDATE User SET Username = "${user.Username}" WHERE UserId = ${user.UserID}`
 
@@ -55,4 +63,4 @@ async function deleteUser(userId) {
   await con.query(sql)
 }
 
-module.exports = { getAllUsers, register, editUser, deleteUser }
+module.exports = { getAllUsers, register, editUser, deleteUser, login }

@@ -22,6 +22,15 @@ router
   }
 })
 
+.post('/login', async (req, res) => {
+  try {
+    const user = await User.login(req.body)
+    res.send({...user, Password: undefined})
+  } catch(err) {
+    res.status(401).send({message: err.message})
+  }
+})
+
 .put('/edit', (req, res) => {
   try {
     const user = User.editUser(req.body)
